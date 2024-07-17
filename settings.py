@@ -1,3 +1,3 @@
-SUPPLIER_EMAIL = "supplier1@gmail.com"
-SELLER_EMAIL = "seller1@gmail.com"
+SUPPLIER_EMAIL = ${{secrets.EMAIL_SUPPL}}
+SELLER_EMAIL = ${{secrets.EMAIL_SELLER}}
 PASSWORD = ${{secrets.PASSWORD}}
