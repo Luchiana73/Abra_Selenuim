@@ -16,7 +16,7 @@ def login_supplier(browser):
     link = 'https://dev.abra-market.com/login'
     page = LoginPage(browser, link)
     page.open()
-    page.enter_login(settings.SUPPLIER_EMAIL)
+    page.enter_email(settings.SUPPLIER_EMAIL)
     page.enter_password(settings.PASSWORD)
     page.submit_login_button()
     return browser
@@ -27,7 +27,7 @@ def login_seller(browser):
     link = 'https://dev.abra-market.com/login'
     page = LoginPage(browser, link)
     page.open()
-    page.enter_login(settings.SELLER_EMAIL)
+    page.enter_email(settings.SELLER_EMAIL)
     page.enter_password(settings.PASSWORD)
     page.submit_login_button()
     return browser

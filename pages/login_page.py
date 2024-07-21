@@ -1,9 +1,9 @@
-from UI_tests.pages.base_page import BasePage
-from UI_tests.pages.locators import LoginPageLocators
+from pages.base_page import BasePage
+from pages.locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
-    def enter_login(self, email):
+    def enter_email(self, email):
         login_email = self.browser.find_element(*LoginPageLocators.LOGIN_EMAIL)
         login_email.send_keys(email)
 
