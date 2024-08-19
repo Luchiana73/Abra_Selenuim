@@ -15,6 +15,10 @@ class RegistrationPageLocators:
     REGISTER_BUTTON = LoginPageLocators.LOGIN_BUTTON
 
 
+class ConfirmEmailPageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, 'a.ConfirmEmailPage_link__kO5Ku[href="/login"]')
+
+
 class MainPageLocators:
     LOGIN_LINK = (By.XPATH, '//*[@id="root"]/div/div/header/div[1]/div/div[2]/div/a[2]')
     REGISTRATION_LINK = (By.CSS_SELECTOR, 'a.Button_light_red__G4Gow[href="/register"]')

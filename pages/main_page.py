@@ -1,5 +1,3 @@
-import time
-
 from pages.base_page import BasePage
 from pages.locators import MainPageLocators, FaqPageLocators
 from selenium.webdriver.common.action_chains import ActionChains

@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import RegistrationPageLocators
+from pages.locators import RegistrationPageLocators, ConfirmEmailPageLocators
 
 
 class RegistrationPage(BasePage):
@@ -20,3 +20,6 @@ class RegistrationPage(BasePage):
     def submit_create_account_button(self):
         reg_button = self.browser.find_element(*RegistrationPageLocators.REGISTER_BUTTON)
         reg_button.submit()
+
+    def complete_user_registration(self):
+        self.browser.find_element(*ConfirmEmailPageLocators.LOGIN_LINK).click()
