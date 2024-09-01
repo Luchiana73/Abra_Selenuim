@@ -29,6 +29,7 @@ def test_register_with_valid_data(browser, request):
     confirmation_link = get_confirmation_link(email, api_url)
     browser.get(confirmation_link)
     print(f'Confirmation link: {confirmation_link}')
+    time.sleep(2)
 
     assert "confirm_email" in browser.current_url
     page.complete_user_registration()

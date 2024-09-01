@@ -13,10 +13,43 @@ class RegistrationPageLocators:
     REGISTER_EMAIL = LoginPageLocators.LOGIN_EMAIL
     REGISTER_PASS = LoginPageLocators.LOGIN_PASS
     REGISTER_BUTTON = LoginPageLocators.LOGIN_BUTTON
+    LINK_SENT_MESSAGE = (By.XPATH, '//div[text()="A link for sign up has been sent to your email address."]')
 
 
 class ConfirmEmailPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, 'a.ConfirmEmailPage_link__kO5Ku[href="/login"]')
+
+
+class SetupAccountPageLocators:
+    FIRST_NAME_FIELD = (By.ID, 'firstName')
+    LAST_NAME_FIELD = (By.ID, 'lastName')
+    PHONE_COUNTRY_DROPDOWN = (By.CLASS_NAME, 'flag-dropdown.PhoneNumberInput_phone_flag__Npodl')
+    COUNTRY_LOCATOR_TURKEY = (By.CSS_SELECTOR, 'li.country[data-country-code="tr"]')
+    PHONE_NUMBER_FIELD = (By.CSS_SELECTOR, 'input.PhoneNumberInput_phone__M4NhG')
+    SUBMIT_FIRST_STEP_BUTTON = (By.CSS_SELECTOR, 'button.SupplierPersonalInfoForm_submit_btn__8BNcQ')
+    UPLOAD_LOGO_INPUT = (By.ID, 'profileLogo')
+    SHOP_NAME_FIELD = (By.CSS_SELECTOR, 'input.Input_input__YeDuE[name="storeName"]')
+    SELECT_BUSINESS_SECTOR_DROPDOWN = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[1]/div/label[2]/div/div')
+    CLOTHES_BUSINESS_SECTOR = (By.XPATH, '//li[@class="SelectItem_item__kFdkV"]//p[text()="Clothes"]')
+    MANUFACTURER_CHECKBOX = (By.CSS_SELECTOR, 'input[type="checkbox"]')
+    LICENCE_NUMBER_FIELD = (By.CSS_SELECTOR, 'input[name="license"]')
+    ESTABLISHMENT_YEAR_FIELD = (By.CSS_SELECTOR, 'input[name="yearEstablished"]')
+    NUMBER_OF_EMPLOYEES_DROPDOWN = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[2]/div/label[2]/div/div')
+    NUMBER_OF_EMPLOYEES = {
+        '<10': (By.XPATH, '//*[@id="combobox-list"]/li[1]'),
+        '11-50': (By.XPATH, '//*[@id="combobox-list"]/li[2]'),
+        '50-100': (By.XPATH, '//*[@id="combobox-list"]/li[3]'),
+        '>100': (By.XPATH, '//*[@id="combobox-list"]/li[4]'),
+    }
+    COUNTRY_OF_COMPANY_REGISTRATION_DROPDOWN = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[2]/label[1]/div/div')
+    COUNTRY_OF_COMPANY_REGISTRATION_TURKEY = (By.XPATH, '//li[@class="SelectItem_item__kFdkV"]//p[text()="Turkey"]')
+    BUSINESS_DESCRIPTION_FIELD = (By.CSS_SELECTOR, 'input[name="description"]')
+    BUSINESS_PHONE_COUNTRY_DROPDOWN = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[3]/div[1]/label/div/div[2]')
+    BUSINESS_COUNTRY_LOCATOR_TURKEY = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[3]/div[1]/label/div/div['
+                                                 '2]/ul/li[7]')
+    BUSINESS_EMAIL_FIELD = (By.CSS_SELECTOR, 'input[name="email"]')
+    COMPANY_ADDRESS_FIELD = (By.CSS_SELECTOR, 'input[name="address"]')
+    PROFILE_SAVE_BUTTON = (By.XPATH, '//*[@id="root"]/div/div/div/form/button')
 
 
 class MainPageLocators:

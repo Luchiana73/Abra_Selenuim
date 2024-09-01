@@ -51,3 +51,4 @@ wheels/
 *.egg
 
 support/temporary_email_generator.py
+tests/e2e_fixture_account_creation_test.py
