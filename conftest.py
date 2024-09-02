@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 import settings
-from Ui_Tests.pages.login_page import LoginPage
+from pages.login_page import LoginPage
 
 
 @pytest.fixture()

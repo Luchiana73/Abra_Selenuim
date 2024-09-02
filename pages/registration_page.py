@@ -1,7 +1,7 @@
 import requests
 
-from Ui_Tests.pages.base_page import BasePage
-from Ui_Tests.pages.locators import RegistrationPageLocators, ConfirmEmailPageLocators
+from pages.base_page import BasePage
+from pages.locators import RegistrationPageLocators, ConfirmEmailPageLocators
 
 
 class RegistrationPage(BasePage):

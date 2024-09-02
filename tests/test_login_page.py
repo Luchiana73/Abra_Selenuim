@@ -1,9 +1,9 @@
 import pytest
-from Ui_Tests.pages.login_page import LoginPage
+from pages.login_page import LoginPage
 import settings
 import config
 from selenium.webdriver.common.by import By
-from Ui_Tests.pages.locators import LoginPageLocators
+from pages.locators import LoginPageLocators
 
 
 @pytest.mark.parametrize('email', [settings.SUPPLIER_EMAIL, settings.SELLER_EMAIL])

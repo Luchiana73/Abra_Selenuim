@@ -1,6 +1,6 @@
-from Ui_Tests.pages.main_page import MainPage
-from Ui_Tests.pages.locators import (MainPageLocators, ProductCategoryPageLocators, FaqPageLocators,
-                                     SellOnAbraPageLocators, ContactSupportPageLocators, AboutUsPageLocators)
+from pages.main_page import MainPage
+from pages.locators import (MainPageLocators, ProductCategoryPageLocators, FaqPageLocators,
+                            SellOnAbraPageLocators, ContactSupportPageLocators, AboutUsPageLocators)
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 

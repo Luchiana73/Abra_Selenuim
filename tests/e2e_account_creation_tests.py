@@ -1,11 +1,11 @@
 import time
-from Ui_Tests.pages.registration_page import RegistrationPage, delete_user
-from Ui_Tests.pages.login_page import LoginPage
-from Ui_Tests.pages.setup_account_page import SetupPersonalAccountPage, SetupBusinessAccountPage
+from pages.registration_page import RegistrationPage, delete_user
+from pages.login_page import LoginPage
+from pages.setup_account_page import SetupPersonalAccountPage, SetupBusinessAccountPage
 import config
 from config import base_url
 from selenium.webdriver.common.by import By
-from Ui_Tests.pages.locators import RegistrationPageLocators
+from pages.locators import RegistrationPageLocators
 from support.email_utils import generate_temporary_email, get_confirmation_link
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
