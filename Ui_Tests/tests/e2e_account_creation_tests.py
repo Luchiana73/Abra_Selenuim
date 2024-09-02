@@ -1,17 +1,17 @@
 import time
-from pages.registration_page import RegistrationPage
-from pages.login_page import LoginPage
-from pages.setup_account_page import SetupPersonalAccountPage, SetupBusinessAccountPage
+from Ui_Tests.pages.registration_page import RegistrationPage, delete_user
+from Ui_Tests.pages.login_page import LoginPage
+from Ui_Tests.pages.setup_account_page import SetupPersonalAccountPage, SetupBusinessAccountPage
 import config
 from config import base_url
 from selenium.webdriver.common.by import By
-from pages.locators import RegistrationPageLocators
+from Ui_Tests.pages.locators import RegistrationPageLocators
 from support.email_utils import generate_temporary_email, get_confirmation_link
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_registration_and_setup_supplier_account_flow(browser, user_cleanup):
+def test_registration_and_setup_supplier_account_flow(browser):
     email, api_url = generate_temporary_email()
 
     # User registration
@@ -67,6 +67,7 @@ def test_registration_and_setup_supplier_account_flow(browser, user_cleanup):
     setup_page.select_manufacturer_option()
     setup_page.fill_license_number()
     setup_page.enter_year_established()
+    time.sleep(2)
     setup_page.select_number_of_employees()
     setup_page.select_country_of_company_registration()
     setup_page.fill_business_description()
@@ -80,4 +81,4 @@ def test_registration_and_setup_supplier_account_flow(browser, user_cleanup):
         EC.url_to_be(base_url)), f"Expected URL to be {base_url}, but got {browser.current_url}."
 
     # Delete user at the end of test
-    # user_cleanup(base_url, email)
+    delete_user(base_url, email)

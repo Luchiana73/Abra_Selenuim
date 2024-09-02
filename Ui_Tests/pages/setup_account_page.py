@@ -1,8 +1,9 @@
 import random
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.base_page import BasePage
-from pages.locators import SetupAccountPageLocators
+from Ui_Tests.pages.base_page import BasePage
+from Ui_Tests.pages.locators import SetupAccountPageLocators
 from config import generate_turkey_phone_number, generate_licence_number, generate_year, generate_turkish_address
 from faker import Faker
 

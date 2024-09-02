@@ -1,5 +1,5 @@
-from pages.base_page import BasePage
-from pages.locators import MainPageLocators, FaqPageLocators
+from Ui_Tests.pages.base_page import BasePage
+from Ui_Tests.pages.locators import MainPageLocators, FaqPageLocators
 from selenium.webdriver.common.action_chains import ActionChains
 
 

@@ -1,8 +1,7 @@
 import pytest
-import requests
 from selenium import webdriver
 import settings
-from pages.login_page import LoginPage
+from Ui_Tests.pages.login_page import LoginPage
 
 
 @pytest.fixture()
@@ -32,18 +31,3 @@ def login_seller(browser):
     page.enter_password(settings.PASSWORD)
     page.submit_login_button()
     return browser
-
-
-@pytest.fixture()
-def user_cleanup(request):
-    def cleanup(base_url, email):
-        delete_endpoint = f"{base_url}/users/account/delete"
-
-        response = requests.delete(delete_endpoint, json={"email": email})
-
-        if response.status_code == 200:
-            print(f"User with email {email} has been deleted successfully.")
-        else:
-            print(f"Failed to delete user with email {email}. Status code: {response.status_code}")
-            print(response.text)
-    return cleanup
