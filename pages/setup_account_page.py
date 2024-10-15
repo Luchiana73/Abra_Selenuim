@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 from pages.locators import SetupAccountPageLocators
-from config import generate_turkey_phone_number, generate_licence_number, generate_year, generate_turkish_address
+from test_data import generate_turkey_phone_number, generate_licence_number, generate_year, generate_turkish_address
 from faker import Faker
 
 fake = Faker()
@@ -60,7 +60,7 @@ class SetupBusinessAccountPage(BasePage):
         print(f"Licence number: {license_number}")
 
     def enter_year_established(self):
-        year = generate_year(1980)
+        year = generate_year(1960)
         self.browser.find_element(*SetupAccountPageLocators.ESTABLISHMENT_YEAR_FIELD).send_keys(year)
         print(f"Year company established: {year}")
 

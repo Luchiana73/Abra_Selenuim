@@ -1,7 +1,7 @@
 import pytest
 from pages.login_page import LoginPage
 import settings
-import config
+import test_data
 from selenium.webdriver.common.by import By
 from pages.locators import LoginPageLocators
 
@@ -20,7 +20,7 @@ def test_correct_login(browser, email):
         assert browser.find_element(By.CSS_SELECTOR, 'button.HeaderCategories_button__Lv0HF')
 
 
-@pytest.mark.parametrize('email', config.invalid_login_emails)
+@pytest.mark.parametrize('email', test_data.invalid_login_emails)
 def test_login_fails_with_invalid_email(browser, email):
     link = 'https://dev.abra-market.com/login'
     page = LoginPage(browser, link)
@@ -33,7 +33,7 @@ def test_login_fails_with_invalid_email(browser, email):
         "Login form is not present, user logged in with an invalid email"
 
 
-@pytest.mark.parametrize('password', config.invalid_login_passwords)
+@pytest.mark.parametrize('password', test_data.invalid_login_passwords)
 def test_supplier_login_fails_with_invalid_password(browser, password):
     link = 'https://dev.abra-market.com/login'
     page = LoginPage(browser, link)
@@ -46,7 +46,7 @@ def test_supplier_login_fails_with_invalid_password(browser, password):
         "Login form is not present, user logged in with an invalid password"
 
 
-@pytest.mark.parametrize('password', config.invalid_login_passwords)
+@pytest.mark.parametrize('password', test_data.invalid_login_passwords)
 def test_seller_login_fails_with_invalid_password(browser, password):
     link = 'https://dev.abra-market.com/login'
     page = LoginPage(browser, link)

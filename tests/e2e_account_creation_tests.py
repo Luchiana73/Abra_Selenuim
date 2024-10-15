@@ -2,8 +2,8 @@ import time
 from pages.registration_page import RegistrationPage, delete_user
 from pages.login_page import LoginPage
 from pages.setup_account_page import SetupPersonalAccountPage, SetupBusinessAccountPage
-import config
-from config import base_url
+import test_data
+from test_data import base_url
 from selenium.webdriver.common.by import By
 from pages.locators import RegistrationPageLocators
 from support.email_utils import generate_temporary_email, get_confirmation_link
@@ -20,7 +20,7 @@ def test_registration_and_setup_supplier_account_flow(browser):
     registration_page.open()
     registration_page.select_role_supplier()
     registration_page.enter_email(email)
-    registration_page.enter_password(config.valid_reg_password)
+    registration_page.enter_password(test_data.valid_reg_password)
     registration_page.submit_create_account_button()
     assert browser.find_element(*RegistrationPageLocators.LINK_SENT_MESSAGE)
     assert browser.current_url == f'{base_url}register/check_email'
@@ -41,7 +41,7 @@ def test_registration_and_setup_supplier_account_flow(browser):
     login_page = LoginPage(browser, login_page_link)
     login_page.open()
     login_page.enter_email(email)
-    login_page.enter_password(config.valid_reg_password)
+    login_page.enter_password(test_data.valid_reg_password)
     login_page.submit_login_button()
     WebDriverWait(browser, 10).until(EC.url_contains("account_setup_personal_info"))
     assert browser.find_element(By.CLASS_NAME, 'SupplierRegisterFormStep_title__9g20k')
