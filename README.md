@@ -38,8 +38,6 @@ cd Abra_Selenium
 ```
 2️⃣ Install dependencies
 ```
-bash
-Copia codice
 pip install -r requirements.txt
 ```
 3️⃣ Configure the driver
@@ -47,7 +45,6 @@ Make sure ChromeDriver or GeckoDriver is installed and added to your system PATH
 
 4️⃣ Run the tests
 ```
-bash
 pytest -v
 ```
 
@@ -64,33 +61,28 @@ Abra_Selenium/
 ```
 
 ## 📈 Possible Improvements
-Add test reporting (Allure, HTMLTestReport)
-
-Integrate CI/CD (GitHub Actions)
-
-Add test data parametrization
-
-Extend coverage with API tests (REST / GraphQL)
-
-Include Docker setup for reproducible runs
+1.Add test reporting (Allure, HTMLTestReport)
+2.Integrate CI/CD (GitHub Actions)
+3.Add test data parametrization
+4.Extend coverage with API tests (REST / GraphQL)
+5.Include Docker setup for reproducible runs
 
 ## 🧩 Key QA Concepts Used
-Page Object Model (POM)
-
-Test isolation and fixtures (Pytest)
-
-Browser synchronization (implicit / explicit waits)
-
-Assertions and error validation
-
-Structured test naming and maintainability
+1.Page Object Model (POM)
+2.Test isolation and fixtures (Pytest)
+3.Browser synchronization (implicit / explicit waits)
+4.Assertions and error validation
+5.Structured test naming and maintainability
 
 👩‍💻 Author
 Luchiana73
+
 QA Automation Engineer
+
 Python • Selenium • Pytest • GitHub Actions
 
 📫 Open to collaborations and QA automation projects.
+
 
 
 
