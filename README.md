@@ -33,29 +33,29 @@ The test suite checks:
 ### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/Luchiana73/Abra_Selenium.git
-cd Abra_Selenium
+cd Abra_Selenium```
 2️⃣ Install dependencies
-bash
+```bash
 Copia codice
-pip install -r requirements.txt
+pip install -r requirements.txt```
 3️⃣ Configure the driver
 Make sure ChromeDriver or GeckoDriver is installed and added to your system PATH.
 
 4️⃣ Run the tests
-bash
-Copia codice
-pytest -v
-🧪 Project Structure
-bash
-Copia codice
+```bash
+pytest -v```
+
+## 🧪 Project Structure
+```bash
 Abra_Selenium/
 │
 ├── pages/              # Page Object files
 ├── tests/              # Test scripts
 ├── conftest.py         # Pytest configuration
 ├── requirements.txt    # Dependencies
-└── README.md
-📈 Possible Improvements
+└── README.md```
+
+## 📈 Possible Improvements
 Add test reporting (Allure, HTMLTestReport)
 
 Integrate CI/CD (GitHub Actions)
@@ -66,7 +66,7 @@ Extend coverage with API tests (REST / GraphQL)
 
 Include Docker setup for reproducible runs
 
-🧩 Key QA Concepts Used
+## 🧩 Key QA Concepts Used
 Page Object Model (POM)
 
 Test isolation and fixtures (Pytest)
@@ -83,4 +83,5 @@ QA Automation Engineer
 Python • Selenium • Pytest • GitHub Actions
 
 📫 Open to collaborations and QA automation projects.
+
 
