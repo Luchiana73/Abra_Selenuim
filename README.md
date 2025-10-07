@@ -19,7 +19,7 @@ The test suite checks:
 ## 🧰 Tech Stack
 
 | Tool / Library | Purpose |
-|----------------|---------|
+|----------------|----------|
 | **Python 3.x** | Core programming language |
 | **Selenium WebDriver** | Browser automation |
 | **Pytest** | Test runner and structure |
@@ -34,56 +34,53 @@ The test suite checks:
 ```bash
 git clone https://github.com/Luchiana73/Abra_Selenium.git
 cd Abra_Selenium
-
-### 2️⃣ Install dependencies
-```bash
+2️⃣ Install dependencies
+bash
+Copia codice
 pip install -r requirements.txt
-
-### 3️⃣ Configure the driver
+3️⃣ Configure the driver
 Make sure ChromeDriver or GeckoDriver is installed and added to your system PATH.
 
-### 4️⃣ Run the tests
-```bash
+4️⃣ Run the tests
+bash
+Copia codice
 pytest -v
-
-## 🧪 Project Structure
-```
+🧪 Project Structure
+bash
+Copia codice
 Abra_Selenium/
 │
-├── pages/ # Page Object files
-├── tests/ # Test scripts
-├── conftest.py # Pytest configuration
-├── requirements.txt # Dependencies
+├── pages/              # Page Object files
+├── tests/              # Test scripts
+├── conftest.py         # Pytest configuration
+├── requirements.txt    # Dependencies
 └── README.md
-```
+📈 Possible Improvements
+Add test reporting (Allure, HTMLTestReport)
 
----
+Integrate CI/CD (GitHub Actions)
 
-## 📈 Possible Improvements
+Add test data parametrization
 
-- Add test reporting (**Allure**, **HTMLTestReport**)  
-- Integrate CI/CD (**GitHub Actions**)  
-- Add test data parametrization  
-- Extend coverage with **API tests** (REST / GraphQL)  
-- Include Docker setup for reproducible runs  
+Extend coverage with API tests (REST / GraphQL)
 
----
+Include Docker setup for reproducible runs
 
-## 🧩 Key QA Concepts Used
+🧩 Key QA Concepts Used
+Page Object Model (POM)
 
-- **Page Object Model (POM)**  
-- **Test isolation and fixtures (Pytest)**  
-- **Browser synchronization** (implicit / explicit waits)  
-- **Assertions and error validation**  
-- **Structured test naming and maintainability**
+Test isolation and fixtures (Pytest)
 
----
+Browser synchronization (implicit / explicit waits)
 
-## 👩‍💻 Author
+Assertions and error validation
 
-**[Luchiana73](https://github.com/Luchiana73)**  
-*QA Automation Engineer*  
-**Python • Selenium • Pytest • GitHub Actions**
+Structured test naming and maintainability
 
-📫 *Open to collaborations and QA automation projects.*
+👩‍💻 Author
+Luchiana73
+QA Automation Engineer
+Python • Selenium • Pytest • GitHub Actions
+
+📫 Open to collaborations and QA automation projects.
 
