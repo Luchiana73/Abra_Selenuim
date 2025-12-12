@@ -3,26 +3,27 @@ from pages.locators import (MainPageLocators, ProductCategoryPageLocators, FaqPa
                             SellOnAbraPageLocators, ContactSupportPageLocators, AboutUsPageLocators)
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import test_data
 
 
 def test_go_to_login_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_login_page()
-    assert browser.current_url == 'https://dev.abra-market.com/login'
+    assert browser.current_url == f'{test_data.base_url}login'
 
 
 def test_go_to_registration_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_registration_page()
-    assert browser.current_url == 'https://dev.abra-market.com/register'
+    assert browser.current_url == f'{test_data.base_url}register'
 
 
 def test_show_categories_menu_list(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.show_categories_menu_list()
@@ -31,7 +32,7 @@ def test_show_categories_menu_list(browser):
 
 
 def test_submenu_product_categories(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.display_clothes_category_items()
@@ -41,7 +42,7 @@ def test_submenu_product_categories(browser):
 
 
 def test_go_to_product_category_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_product_category_page()
@@ -49,69 +50,69 @@ def test_go_to_product_category_page(browser):
 
 
 def test_go_to_news_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_news_page()
-    assert browser.current_url == 'https://dev.abra-market.com/news'
+    assert browser.current_url == f'{test_data.base_url}news'
 
 
 def test_go_to_tutorials_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_tutorials_page()
-    assert browser.current_url == 'https://dev.abra-market.com/tutorials'
+    assert browser.current_url == f'{test_data.base_url}tutorials'
 
 
 def test_go_to_sell_on_abra_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_sell_on_abra_page()
-    assert browser.current_url == 'https://dev.abra-market.com/sell'
+    assert browser.current_url == f'{test_data.base_url}sell'
     assert browser.find_element(*SellOnAbraPageLocators.TITLE_SELL_ON_ABRA)
 
 
 def test_go_to_contact_support_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_contact_support_page()
-    assert browser.current_url == 'https://dev.abra-market.com/contact'
+    assert browser.current_url == f'{test_data.base_url}contact'
     assert browser.find_element(*ContactSupportPageLocators.WHATSAPP_PHONE_NUMBER)
     assert browser.find_elements(*ContactSupportPageLocators.SOCIAL_MEDIA_ICON)
 
 
 def test_go_to_faq_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_faq_page()
-    assert browser.current_url == 'https://dev.abra-market.com/faq'
+    assert browser.current_url == f'{test_data.base_url}faq'
     assert browser.find_element(*FaqPageLocators.TITLE_ON_THE_FAQ_PAGE)
 
 
 def test_go_to_contact_support_from_faq_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_faq_page()
     page.go_to_contact_support_from_faq_page()
-    assert browser.current_url == 'https://dev.abra-market.com/contact'
+    assert browser.current_url == f'{test_data.base_url}contact'
 
 
 def test_go_to_about_us_page(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_about_us_page()
-    assert browser.current_url == 'https://dev.abra-market.com/about'
+    assert browser.current_url == f'{test_data.base_url}about'
     assert browser.find_element(*AboutUsPageLocators.TITLE_ABOUT_US)
 
 
 def test_language_and_currency_dropdown(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.language_and_currency_dropdown()
@@ -121,7 +122,7 @@ def test_language_and_currency_dropdown(browser):
 
 
 def test_shipment_country_dropdown(browser):
-    link = 'https://dev.abra-market.com/'
+    link = f'{test_data.base_url}'
     page = MainPage(browser, link)
     page.open()
     page.shipment_country_dropdown()

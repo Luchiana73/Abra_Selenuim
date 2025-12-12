@@ -8,7 +8,7 @@ from pages.locators import LoginPageLocators
 
 @pytest.mark.parametrize('email', [settings.SUPPLIER_EMAIL, settings.SELLER_EMAIL])
 def test_correct_login(browser, email):
-    link = 'https://dev.abra-market.com/login'
+    link = 'https://dev.marketabra.com/login'
     page = LoginPage(browser, link)
     page.open()
     page.enter_email(email)
@@ -22,7 +22,7 @@ def test_correct_login(browser, email):
 
 @pytest.mark.parametrize('email', test_data.invalid_login_emails)
 def test_login_fails_with_invalid_email(browser, email):
-    link = 'https://dev.abra-market.com/login'
+    link = 'https://dev.marketabra.com/login'
     page = LoginPage(browser, link)
     page.open()
     page.enter_email(email)
@@ -35,7 +35,7 @@ def test_login_fails_with_invalid_email(browser, email):
 
 @pytest.mark.parametrize('password', test_data.invalid_login_passwords)
 def test_supplier_login_fails_with_invalid_password(browser, password):
-    link = 'https://dev.abra-market.com/login'
+    link = 'https://dev.marketabra.com/login'
     page = LoginPage(browser, link)
     page.open()
     page.enter_email(settings.SUPPLIER_EMAIL)
@@ -48,7 +48,7 @@ def test_supplier_login_fails_with_invalid_password(browser, password):
 
 @pytest.mark.parametrize('password', test_data.invalid_login_passwords)
 def test_seller_login_fails_with_invalid_password(browser, password):
-    link = 'https://dev.abra-market.com/login'
+    link = 'https://dev.marketabra.com/login'
     page = LoginPage(browser, link)
     page.open()
     page.enter_email(settings.SELLER_EMAIL)

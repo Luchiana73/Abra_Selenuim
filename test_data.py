@@ -3,8 +3,6 @@ import random
 from faker import Faker
 fake = Faker()
 
-base_url = 'https://dev.abra-market.com/'
-
 invalid_login_emails = ['suplier1@gmail.com', 'supplier!@gmail.com', 'supplier1gmail.com', 'supplier1@mail.com',
                         'seler1@gmail.com', 'seller1!@gmail.com', 'seller1@gmail.ru', 'seller1|gmail.com', '']
 

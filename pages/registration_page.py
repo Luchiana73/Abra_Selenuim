@@ -25,15 +25,3 @@ class RegistrationPage(BasePage):
 
     def complete_user_registration(self):
         self.browser.find_element(*ConfirmEmailPageLocators.LOGIN_LINK).click()
-
-
-def delete_user(base_url, email):
-    delete_endpoint = f"{base_url}/users/account/delete"
-
-    response = requests.delete(delete_endpoint, json={"email": email})
-
-    if response.status_code == 200:
-        print(f"User with email {email} has been deleted successfully.")
-    else:
-        print(f"Failed to delete user with email {email}. Status code: {response.status_code}")
-        print(response.text)

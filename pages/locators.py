@@ -13,7 +13,10 @@ class RegistrationPageLocators:
     REGISTER_EMAIL = LoginPageLocators.LOGIN_EMAIL
     REGISTER_PASS = LoginPageLocators.LOGIN_PASS
     REGISTER_BUTTON = LoginPageLocators.LOGIN_BUTTON
-    LINK_SENT_MESSAGE = (By.XPATH, '//div[text()="A link for sign up has been sent to your email address."]')
+    # success / error messages
+    SUCCESS_MESSAGE = (By.XPATH, '//div[text()="A link for sign up has been sent to your email address."]')
+    EXISTING_EMAIL_ERROR = (By.XPATH, '//p[contains(text(), "Email is already registered")]')
+    REGISTER_ERROR = (By.CSS_SELECTOR, 'span.Input_error__GM1PP')
 
 
 class ConfirmEmailPageLocators:
@@ -44,9 +47,9 @@ class SetupAccountPageLocators:
     COUNTRY_OF_COMPANY_REGISTRATION_DROPDOWN = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[2]/label[1]/div/div')
     COUNTRY_OF_COMPANY_REGISTRATION_TURKEY = (By.XPATH, '//li[@class="SelectItem_item__kFdkV"]//p[text()="Turkey"]')
     BUSINESS_DESCRIPTION_FIELD = (By.CSS_SELECTOR, 'input[name="description"]')
+    COUNTRY_LIST_CONTAINER = (By.CSS_SELECTOR, "ul.country-list")
     BUSINESS_PHONE_COUNTRY_DROPDOWN = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[3]/div[1]/label/div/div[2]')
-    BUSINESS_COUNTRY_LOCATOR_TURKEY = (By.XPATH, '//*[@id="root"]/div/div/div/form/div[3]/div[1]/label/div/div['
-                                                 '2]/ul/li[7]')
+    BUSINESS_COUNTRY_LOCATOR_TURKEY = (By.XPATH, "//li[contains(., '+90')]")
     BUSINESS_EMAIL_FIELD = (By.CSS_SELECTOR, 'input[name="email"]')
     COMPANY_ADDRESS_FIELD = (By.CSS_SELECTOR, 'input[name="address"]')
     PROFILE_SAVE_BUTTON = (By.XPATH, '//*[@id="root"]/div/div/div/form/button')

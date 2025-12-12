@@ -1,5 +1,5 @@
 import random
-
+import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
@@ -90,14 +90,29 @@ class SetupBusinessAccountPage(BasePage):
             SetupAccountPageLocators.BUSINESS_DESCRIPTION_FIELD)).send_keys(text)
 
     def select_business_phone_number_country(self):
-        WebDriverWait(self.browser, 20).until(EC.visibility_of_element_located(
-            SetupAccountPageLocators.BUSINESS_PHONE_COUNTRY_DROPDOWN))
-        WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable(
-            SetupAccountPageLocators.BUSINESS_PHONE_COUNTRY_DROPDOWN)).click()
-        WebDriverWait(self.browser, 10).until(EC.presence_of_element_located(
-            SetupAccountPageLocators.BUSINESS_COUNTRY_LOCATOR_TURKEY))
-        WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable(
-            SetupAccountPageLocators.BUSINESS_COUNTRY_LOCATOR_TURKEY)).click()
+        # 1. Ждём dropdown
+        dropdown = WebDriverWait(self.browser, 20).until(
+            EC.element_to_be_clickable(SetupAccountPageLocators.BUSINESS_PHONE_COUNTRY_DROPDOWN)
+        )
+
+        # 2. Прокручиваем к элементу — иначе click может не сработать
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", dropdown)
+        time.sleep(0.3)
+
+        # 3. Кликаем
+        dropdown.click()
+
+        # 4. Ждём появления списка стран
+        WebDriverWait(self.browser, 10).until(
+            EC.visibility_of_element_located(SetupAccountPageLocators.COUNTRY_LIST_CONTAINER)
+        )
+
+        # 5. Ждём Turkey
+        turkey = WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable(SetupAccountPageLocators.BUSINESS_COUNTRY_LOCATOR_TURKEY)
+        )
+
+        turkey.click()
 
     def enter_business_phone_number(self):
         phone_number = generate_turkey_phone_number()
