@@ -25,22 +25,21 @@ The tests are written using the **Page Object Model (POM)** approach.
 - `pages/` – Page Object classes
 - `tests/` – UI and E2E test cases
 - `support/` – helpers (temporary email, utilities)
-- `settings.py` – configuration via environment variables
+- `settings.py` – configuration (loaded from environment variables)
 
 ## How to Run Tests Locally
 
 1. Clone the repository:
 ```
-git clone https://github.com/your-username/Abra_Selenium.git
-cd Abra_Selenium
+git clone https://github.com/Luchiana73/Abra_Selenuim.git
+
 ```
-2. Create a .env file in the project root and provide your test data:
-```
-BASE_URL=https://dev.marketabra.com
-SUPPLIER_EMAIL=your_test_supplier@email.com
-SELLER_EMAIL=your_test_seller@email.com
-PASSWORD=your_password
-```
+2. Create environment variables
+
+Create a `.env` file based on `.env.example` and fill in your test credentials.
+
+Some tests (e.g. login and account-related tests) require **pre-created and confirmed user accounts**.  
+Please register test accounts manually via the application UI and provide their credentials in the `.env` file.
 3. Install dependencies:
 ```
 pip install -r requirements.txt
@@ -54,3 +53,4 @@ pytest
 - Sensitive data is not stored in the repository.
 - Tests that require authentication expect valid test accounts.
 - Temporary email services are used for registration confirmation in E2E flows.
+- Explicit waits are used to improve test stability.
