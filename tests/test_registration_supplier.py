@@ -3,6 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.registration_page import RegistrationPage
 import test_data
+from settings import BASE_URL
 from pages.locators import RegistrationPageLocators
 from support.email_utils import create_mailtm_account, get_confirmation_link_mailtm
 
@@ -16,7 +17,7 @@ def temp_email(request):
 def test_register_with_valid_data(browser, request):
     email, token = create_mailtm_account()
 
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_supplier()
@@ -25,7 +26,7 @@ def test_register_with_valid_data(browser, request):
     page.submit_create_account_button()
     assert WebDriverWait(browser, 5).until(EC.visibility_of_element_located(
         RegistrationPageLocators.SUCCESS_MESSAGE))
-    assert browser.current_url == f'{test_data.base_url}register/check_email'
+    assert browser.current_url == f'{BASE_URL}register/check_email'
 
     confirmation_link = get_confirmation_link_mailtm(token)
     browser.get(confirmation_link)
@@ -41,7 +42,7 @@ def test_registration_with_existing_email(browser, temp_email):
     email = temp_email
     print(f"[INFO] Using email in test: {email}")
 
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_supplier()
@@ -55,7 +56,7 @@ def test_registration_with_existing_email(browser, temp_email):
 
 @pytest.mark.parametrize('email', test_data.invalid_reg_emails)
 def test_registration_with_invalid_email(browser, email):
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_supplier()
@@ -69,7 +70,7 @@ def test_registration_with_invalid_email(browser, email):
 
 @pytest.mark.parametrize('password', test_data.invalid_reg_passwords)
 def test_registration_with_invalid_password(browser, password):
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_supplier()

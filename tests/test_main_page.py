@@ -3,27 +3,27 @@ from pages.locators import (MainPageLocators, ProductCategoryPageLocators, FaqPa
                             SellOnAbraPageLocators, ContactSupportPageLocators, AboutUsPageLocators)
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import test_data
+from settings import BASE_URL
 
 
 def test_go_to_login_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_login_page()
-    assert browser.current_url == f'{test_data.base_url}login'
+    assert browser.current_url == f'{BASE_URL}login'
 
 
 def test_go_to_registration_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_registration_page()
-    assert browser.current_url == f'{test_data.base_url}register'
+    assert browser.current_url == f'{BASE_URL}register'
 
 
 def test_show_categories_menu_list(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.show_categories_menu_list()
@@ -32,7 +32,7 @@ def test_show_categories_menu_list(browser):
 
 
 def test_submenu_product_categories(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.display_clothes_category_items()
@@ -42,7 +42,7 @@ def test_submenu_product_categories(browser):
 
 
 def test_go_to_product_category_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_product_category_page()
@@ -50,69 +50,69 @@ def test_go_to_product_category_page(browser):
 
 
 def test_go_to_news_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_news_page()
-    assert browser.current_url == f'{test_data.base_url}news'
+    assert browser.current_url == f'{BASE_URL}news'
 
 
 def test_go_to_tutorials_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_tutorials_page()
-    assert browser.current_url == f'{test_data.base_url}tutorials'
+    assert browser.current_url == f'{BASE_URL}tutorials'
 
 
 def test_go_to_sell_on_abra_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_sell_on_abra_page()
-    assert browser.current_url == f'{test_data.base_url}sell'
+    assert browser.current_url == f'{BASE_URL}sell'
     assert browser.find_element(*SellOnAbraPageLocators.TITLE_SELL_ON_ABRA)
 
 
 def test_go_to_contact_support_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_contact_support_page()
-    assert browser.current_url == f'{test_data.base_url}contact'
+    assert browser.current_url == f'{BASE_URL}contact'
     assert browser.find_element(*ContactSupportPageLocators.WHATSAPP_PHONE_NUMBER)
     assert browser.find_elements(*ContactSupportPageLocators.SOCIAL_MEDIA_ICON)
 
 
 def test_go_to_faq_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_faq_page()
-    assert browser.current_url == f'{test_data.base_url}faq'
+    assert browser.current_url == f'{BASE_URL}faq'
     assert browser.find_element(*FaqPageLocators.TITLE_ON_THE_FAQ_PAGE)
 
 
 def test_go_to_contact_support_from_faq_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_faq_page()
     page.go_to_contact_support_from_faq_page()
-    assert browser.current_url == f'{test_data.base_url}contact'
+    assert browser.current_url == f'{BASE_URL}contact'
 
 
 def test_go_to_about_us_page(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.go_to_about_us_page()
-    assert browser.current_url == f'{test_data.base_url}about'
+    assert browser.current_url == f'{BASE_URL}about'
     assert browser.find_element(*AboutUsPageLocators.TITLE_ABOUT_US)
 
 
 def test_language_and_currency_dropdown(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.language_and_currency_dropdown()
@@ -122,7 +122,7 @@ def test_language_and_currency_dropdown(browser):
 
 
 def test_shipment_country_dropdown(browser):
-    link = f'{test_data.base_url}'
+    link = f'{BASE_URL}'
     page = MainPage(browser, link)
     page.open()
     page.shipment_country_dropdown()

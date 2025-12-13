@@ -90,28 +90,20 @@ class SetupBusinessAccountPage(BasePage):
             SetupAccountPageLocators.BUSINESS_DESCRIPTION_FIELD)).send_keys(text)
 
     def select_business_phone_number_country(self):
-        # 1. Ждём dropdown
+        # 1. Wait until the dropdown is visible
         dropdown = WebDriverWait(self.browser, 20).until(
-            EC.element_to_be_clickable(SetupAccountPageLocators.BUSINESS_PHONE_COUNTRY_DROPDOWN)
-        )
-
-        # 2. Прокручиваем к элементу — иначе click может не сработать
+            EC.element_to_be_clickable(SetupAccountPageLocators.BUSINESS_PHONE_COUNTRY_DROPDOWN))
+        # 2. # Scroll to the element to make sure click works
         self.browser.execute_script("arguments[0].scrollIntoView(true);", dropdown)
         time.sleep(0.3)
-
-        # 3. Кликаем
+        # 3. Click the dropdown
         dropdown.click()
-
-        # 4. Ждём появления списка стран
+        # 4. Wait for the country list to appear
         WebDriverWait(self.browser, 10).until(
-            EC.visibility_of_element_located(SetupAccountPageLocators.COUNTRY_LIST_CONTAINER)
-        )
-
-        # 5. Ждём Turkey
+            EC.visibility_of_element_located(SetupAccountPageLocators.COUNTRY_LIST_CONTAINER))
+        # 5. Select Turkey
         turkey = WebDriverWait(self.browser, 10).until(
-            EC.element_to_be_clickable(SetupAccountPageLocators.BUSINESS_COUNTRY_LOCATOR_TURKEY)
-        )
-
+            EC.element_to_be_clickable(SetupAccountPageLocators.BUSINESS_COUNTRY_LOCATOR_TURKEY))
         turkey.click()
 
     def enter_business_phone_number(self):

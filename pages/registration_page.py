@@ -1,5 +1,3 @@
-import requests
-
 from pages.base_page import BasePage
 from pages.locators import RegistrationPageLocators, ConfirmEmailPageLocators
 

@@ -4,11 +4,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.registration_page import RegistrationPage
 import test_data
+from settings import BASE_URL
 from pages.locators import RegistrationPageLocators
 
 
 def test_register_with_valid_data(browser, generated_email):
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_seller()
@@ -18,11 +19,11 @@ def test_register_with_valid_data(browser, generated_email):
     print(generated_email)
     assert WebDriverWait(browser, 5).until(EC.visibility_of_element_located(
         RegistrationPageLocators.SUCCESS_MESSAGE))
-    assert browser.current_url == f'{test_data.base_url}register/check_email'
+    assert browser.current_url == f'{BASE_URL}register/check_email'
 
 
 def test_registration_with_existing_email_flow(browser, generated_email):
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
 
     # 1. First registration
@@ -33,7 +34,7 @@ def test_registration_with_existing_email_flow(browser, generated_email):
     page.submit_create_account_button()
     print(generated_email)
     # wait for the backend to complete the registration
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located(
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located(
         RegistrationPageLocators.SUCCESS_MESSAGE))
 
     # 2. Second registration attempt
@@ -43,14 +44,15 @@ def test_registration_with_existing_email_flow(browser, generated_email):
     page.enter_password(test_data.valid_reg_password)
     time.sleep(1)  # necessary for stability
     page.submit_create_account_button()
-    assert WebDriverWait(browser, 5).until(EC.visibility_of_element_located(
-        RegistrationPageLocators.EXISTING_EMAIL_ERROR)), \
-        "Error message 'Email is already registered' was not shown"
+    WebDriverWait(browser, 20).until(
+        EC.text_to_be_present_in_element(
+            RegistrationPageLocators.EXISTING_EMAIL_ERROR,
+            "Email is already registered"))
 
 
 @pytest.mark.parametrize('email', test_data.invalid_reg_emails)
 def test_registration_with_invalid_email(browser, email):
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_seller()
@@ -64,7 +66,7 @@ def test_registration_with_invalid_email(browser, email):
 
 @pytest.mark.parametrize('password', test_data.invalid_reg_passwords)
 def test_registration_with_invalid_password(browser, password):
-    link = f'{test_data.base_url}register'
+    link = f'{BASE_URL}register'
     page = RegistrationPage(browser, link)
     page.open()
     page.select_role_seller()

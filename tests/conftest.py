@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import pytest
 from selenium import webdriver
-import settings
+from settings import BASE_URL, SUPPLIER_EMAIL, SELLER_EMAIL, PASSWORD
 from pages.login_page import LoginPage
 import time
 
@@ -13,27 +13,27 @@ def browser():
     yield browser
     browser.quit()
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def generated_email():
     return f"test_{int(time.time())}@gmail.com"
 
 @pytest.fixture()
 def login_supplier(browser):
-    link = 'https://dev.marketabra.com/login'
+    link = f'{BASE_URL}login'
     page = LoginPage(browser, link)
     page.open()
-    page.enter_email(settings.SUPPLIER_EMAIL)
-    page.enter_password(settings.PASSWORD)
+    page.enter_email(SUPPLIER_EMAIL)
+    page.enter_password(PASSWORD)
     page.submit_login_button()
     return browser
 
 
 @pytest.fixture()
 def login_seller(browser):
-    link = 'https://dev.marketabra.com/login'
+    link = f'{BASE_URL}login'
     page = LoginPage(browser, link)
     page.open()
-    page.enter_email(settings.SELLER_EMAIL)
-    page.enter_password(settings.PASSWORD)
+    page.enter_email(SELLER_EMAIL)
+    page.enter_password(PASSWORD)
     page.submit_login_button()
     return browser

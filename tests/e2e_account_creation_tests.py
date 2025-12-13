@@ -1,21 +1,24 @@
-import time
 from pages.registration_page import RegistrationPage
 from pages.login_page import LoginPage
 from pages.setup_account_page import SetupPersonalAccountPage, SetupBusinessAccountPage
 import test_data
-from test_data import base_url
+from settings import BASE_URL
 from selenium.webdriver.common.by import By
 from pages.locators import RegistrationPageLocators
 from support.email_utils import create_mailtm_account, get_confirmation_link_mailtm
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+"""
+End-to-end test:
+Supplier registration → email confirmation → login → account setup
+"""
 
 def test_registration_and_setup_supplier_account_flow(browser):
     email, token = create_mailtm_account()
 
     # User registration
-    reg_page_link = f'{base_url}register'
+    reg_page_link = f'{BASE_URL}register'
     registration_page = RegistrationPage(browser, reg_page_link)
     registration_page.open()
     registration_page.select_role_supplier()
@@ -23,7 +26,7 @@ def test_registration_and_setup_supplier_account_flow(browser):
     registration_page.enter_password(test_data.valid_reg_password)
     registration_page.submit_create_account_button()
     assert browser.find_element(*RegistrationPageLocators.SUCCESS_MESSAGE)
-    assert browser.current_url == f'{base_url}register/check_email'
+    assert browser.current_url == f'{BASE_URL}register/check_email'
 
     # Registration confirmation
     confirmation_link = get_confirmation_link_mailtm(token)
@@ -37,7 +40,7 @@ def test_registration_and_setup_supplier_account_flow(browser):
     browser.delete_all_cookies()
 
     # Login
-    login_page_link = f'{base_url}login'
+    login_page_link = f'{BASE_URL}login'
     login_page = LoginPage(browser, login_page_link)
     login_page.open()
     login_page.enter_email(email)
@@ -47,7 +50,7 @@ def test_registration_and_setup_supplier_account_flow(browser):
     assert browser.find_element(By.CLASS_NAME, 'SupplierRegisterFormStep_title__9g20k')
 
     # Account setup (personal information)
-    setup_personal_page_link = f'{base_url}account_setup_personal_info'
+    setup_personal_page_link = f'{BASE_URL}account_setup_personal_info'
     setup_page = SetupPersonalAccountPage(browser, setup_personal_page_link)
     setup_page.open()
     setup_page.enter_first_name()
@@ -58,7 +61,7 @@ def test_registration_and_setup_supplier_account_flow(browser):
     WebDriverWait(browser, 10).until(EC.url_contains("account_setup_business_info"))
 
     # Account setup (business information)
-    setup_business_page_link = f'{base_url}account_setup_business_info'
+    setup_business_page_link = f'{BASE_URL}account_setup_business_info'
     setup_page = SetupBusinessAccountPage(browser, setup_business_page_link)
     setup_page.open()
     # setup_page.upload_profile_logo()
@@ -76,4 +79,4 @@ def test_registration_and_setup_supplier_account_flow(browser):
     setup_page.enter_company_address()
     # setup_page.submit_save_profile_button()
     assert WebDriverWait(browser, 10).until(
-        EC.url_to_be(base_url)), f"Expected URL to be {base_url}, but got {browser.current_url}."
+        EC.url_to_be(BASE_URL)), f"Expected URL to be {BASE_URL}, but got {browser.current_url}."
